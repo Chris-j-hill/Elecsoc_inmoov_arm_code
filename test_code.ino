@@ -26,12 +26,25 @@ void loop() {
                 
               else if (Finger == "thumb" || Finger == "first" || Finger == "second" || Finger == "third" || Finger == "fourth")  //for any other input, print invalid message
                 {
+                  reset_actions();
                   increment_multipul(Finger);   //call function to set new value of specified finger
-                
+                  
                 }
+
+              else if( Finger == "ripple"){
+              ripple_fingers();
+              }
               
+              else if (Finger== "in_n_out"){
+                in_and_out();
+              }
+
+              else if (Finger == "come here"){
+                beckoning();
+              }
               else
               {
+                reset_actions;
                 Serial.println("");         
                 Serial.println ("invalid finger name");
                 Serial.println("");
