@@ -344,6 +344,31 @@ int pos1, pos2, pos3, pos4, pos5;
 void reset_actions(){
   flag3 =0;
   flag4 =0;
+  flag5 =0;
   
+}
+
+
+void beckoning(){
+
+  int pos;
+thumb.write(thumb_lower);
+second.write(second_upper);
+third.write(third_lower);
+fourth.write(fourth_lower);
+
+    if (flag5 ==0){
+      pos = first_mid;
+      flag5 =1;
+      start_time = millis();
+    }
+
+    else{
+      int time_now = millis()-start_time;    //figure out how long its been since first execution of this function
+    int temp = sin((time_now * 3.14159) / period); //value beween -1 and 1
+    pos = first_mid + (first_range/2) * temp;      
+    }
+
+    first.write(pos);
 }
 

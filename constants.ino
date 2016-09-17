@@ -56,6 +56,7 @@ int scissors_thumb = thumb_upper;
 int period =4000;               //4 seconds to cycle in and out
 int flag3 = 0;
 int flag4 = 0;
+int flag5 = 0;
 int finger_lag = (3.14159/8); 
 int start_time;
 
