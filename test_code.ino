@@ -4,7 +4,8 @@ void setup() {
   initialise_arm();   //attach servos and set initial positions to 90 degrees
   Serial.begin(9600);
   print_pos();        //print startup positions
-
+pinMode(12, OUTPUT);
+digitalWrite(12,LOW);
 }
 
 
@@ -18,19 +19,23 @@ void loop() {
         
         String Finger = Serial.readString();  //finger name to be set entered by user, names are servo object names
         flag1=1;  //exit condition, allows exit of this loop on next iteration attempt
-    
+          Serial.println(Finger);
+          Finger.trim();
               if (Finger == "play")      //option to randomly set fingers based on rock paper sicissors positions
                 play();
                 
-              else if (Finger!= "thumb" || Finger!= "first" || Finger!= "second" || Finger!= "third" || Finger!= "fourth")  //for any other input, print invalid message
+              else if (Finger == "thumb" || Finger == "first" || Finger == "second" || Finger == "third" || Finger == "fourth")  //for any other input, print invalid message
                 {
+                  increment_multipul(Finger);   //call function to set new value of specified finger
+                
+                }
+              
+              else
+              {
                 Serial.println("");         
                 Serial.println ("invalid finger name");
                 Serial.println("");
                 }
-              
-              else
-                increment_multipul(Finger);   //call function to set new value of specified finger
       }
     }
           

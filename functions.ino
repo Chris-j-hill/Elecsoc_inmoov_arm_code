@@ -6,28 +6,65 @@ second.attach(6);
 third.attach(5);
 fourth.attach(3);
 
- thumb.write(90);                     //set everything to a neutral point, there shouldn't be large forces on the motors here
+ thumb.write(thumb_mid);                     //set everything to a neutral point, there shouldn't be large forces on the motors here
  delay(250);                          //small delay so as not to draw too much current by running all servos
- first.write(90);
+ first.write(first_mid);
  delay(250);
- second.write(90);
+ second.write(second_mid);
  delay(250);
- third.write(90);
+ third.write(third_mid);
  delay(250);
- fourth.write(90);
+ fourth.write(fourth_mid);
 }
 
+
+void middle_pos(){
+
+  thumb.write(thumb_mid);                     //set everything to a neutral point, there shouldn't be large forces on the motors here
+ delay(250);                          //small delay so as not to draw too much current by running all servos
+ fourth.write(fourth_mid);
+ delay(250);
+ first.write(first_mid);
+ delay(250);
+ third.write(third_mid);
+ delay(250);
+ second.write(second_mid);
+ delay(250);
+ 
+}
 void play(){
-  int temp = random(1,4);
-  Serial.println(temp);
-  if (temp ==1)
+  int temp = random(0,4);
+  middle_pos();
+  Serial.println("Lets play!");
+  delay(1000);
+
+  Serial.println("Rock...");
+  delay(500);
+
+  Serial.println("Paper...!");
+  
+  delay(500);
+
+  digitalWrite(12,HIGH);
+  Serial.println("Scissors!");
+  delay(500);
+  digitalWrite(12,LOW);
+  Serial.println("\n\n");
+  
+  if (temp ==1){
   rock();
+  Serial.println("Rock!");
+  }
 
-  else if(temp ==2)
+  else if(temp ==2){
   paper();
+  Serial.println("Paper!");
+  }
 
-  else if (temp ==3)
+  else if (temp ==3){
   scissors();
+  Serial.println("Scissors!");
+  }
   
 }
 
